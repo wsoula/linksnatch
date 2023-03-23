@@ -1,4 +1,4 @@
-import { extractDomainName, extractImageUrl, copyLink } from '@/utils/common'
+import { extractDomainName, extractImageUrl, extractImageSize, copyLink } from '@/utils/common'
 
 export function LinkContainer({
     link,
@@ -12,7 +12,7 @@ export function LinkContainer({
             </div>
             <div class="flex gap-2 flex-row items-center mb-2">
                 <a href={link.url} target="_blank">
-                    <img src={extractImageUrl(link.image_urls ?? '')} class="w-48 h-32" onError={(e) => e.target.style.display = 'none'} />
+                    <img src={extractImageUrl(link.image_urls ?? '')} class={extractImageSize(link.image_urls ?? '')} onError={(e) => e.target.style.display = 'none'} />
                 </a>
             </div>
 
