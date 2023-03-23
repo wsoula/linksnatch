@@ -1,6 +1,6 @@
-import { extractDomainName, copyLink } from '@/utils/common'
+import { extractDomainName, extractImageUrl, copyLink } from '@/utils/common'
 
-export function LinkContainer({ 
+export function LinkContainer({
     link,
     deleteLink
 }) {
@@ -9,6 +9,11 @@ export function LinkContainer({
             <div class="flex gap-2 flex-row items-center mb-2">
                 <img src={'https://' + extractDomainName(link.url ?? '') + '/favicon.ico'} class="w-4 h-4" onError={(e) => e.target.style.display = 'none'} />
                 <p class="text-slate-600 dark:text-gray-300 text-xs">{extractDomainName(link.url ?? '')}</p>
+            </div>
+            <div class="flex gap-2 flex-row items-center mb-2">
+                <a href={link.url} target="_blank">
+                    <img src={extractImageUrl(link.image_urls ?? '')} class="w-48 h-32" onError={(e) => e.target.style.display = 'none'} />
+                </a>
             </div>
 
             <p class="group font-bold flex flex-wrap">
